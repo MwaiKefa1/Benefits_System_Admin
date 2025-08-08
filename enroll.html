@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Enroll Employee</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container py-4">
+    <h2>Enroll Employee in a Benefit Plan</h2>
+    <form method="POST">
+        <div class="mb-3">
+            <label>Employee</label>
+            <select class="form-select" name="employee_id" required>
+                {% for emp in employees %}
+                <option value="{{ emp.id }}">{{ emp.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label>Benefit Plan</label>
+            <select class="form-select" name="plan_id" required>
+                {% for plan in plans %}
+                <option value="{{ plan.id }}">{{ plan.name }} ({{ plan.type }})</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Enroll</button>
+        <a href="/" class="btn btn-secondary">Cancel</a>
+    </form>
+</body>
+</html>
